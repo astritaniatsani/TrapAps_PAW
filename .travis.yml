@@ -1,0 +1,27 @@
+sudo: required
+dist: trusty
+language: php
+
+php:
+  - 7.1.9
+
+branches:
+only:
+  - master #-> Staging Server
+  - develop #-> DevServer
+
+
+#Sebelum melakukan eksekusi skript
+#Install kebutuhan OS,Ext: mod-php dll.
+before_install:
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - sudo mv ./kubectl/usr/local/bin/kubectl
+  - kubectl
+
+#Pre Eksecution 
+#Testing dll.
+before_script:
+
+#Main Execution
+script: 
